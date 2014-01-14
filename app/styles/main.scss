@@ -1,0 +1,87 @@
+$icon-font-path: "/bower_components/sass-bootstrap/fonts/";
+
+
+@import "compass";
+
+body{
+    background-color:#e5e5e5;
+}
+.container{
+    text-align: center;
+}
+
+
+
+
+.showcase-wrapper{
+    width: 100%;
+    position: relative;
+    perspective: 1000px;
+    perspective-origin: 50% 25%;
+    .grid{
+        @include opacity(0);
+    }
+    &.showcase-gridview{
+        .detail{
+            transform: translateZ(-350px);
+            @include opacity(0);
+        }
+        .grid{
+            transform: translateZ(0px);
+            opacity: 1;
+            pointer-events: auto;
+        }
+    }
+}
+
+.grid{
+    position: absolute;
+    width: 620px;
+    left: 50%;
+    margin-left: -310px;
+    height: 100%;
+    z-index: 1000;
+    top: 0;
+    //opacity: 0;
+    pointer-events: none;
+    transform-style: preserve-3d;
+    transition: all 0.3s ease;
+    transform: translateZ(-350px);
+}
+
+
+.detail{
+    width: 620px;
+    height: 620px;
+    margin: 0 auto;
+    position: relative;
+    transition: all 0.3s ease;
+    transform-style: preserve-3d;
+    background:#fefefe;
+    article{
+        display:none;
+    }
+}
+
+
+
+.card{
+    cursor:pointer;
+    width:145px;
+    height:145px;
+    margin:10px 5px;
+    float:left;
+    background:#fefefe;
+    text-align:center;
+    @include border-radius(2px);
+    @include box-shadow(rgba(0, 0, 0, 0.0470588) 0px 2px 3px 0px);
+
+    @include transition-property(box-shadow);
+    @include transition-duration(0.3s);
+    @include transition-timing-function(ease-in);
+
+    &:hover{
+        @include box-shadow(rgba(0, 0, 0, 0.0470588) 0px 8px 11px 3px);
+
+    }
+}
